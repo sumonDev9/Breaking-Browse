@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../component/Header';
 import Navber from '../component/Navber';
 import LatestNews from '../component/LatestNews';
+import LeftsideBer from '../component/LeftsideBer';
 
 const Home = () => {
     return (
@@ -14,6 +15,17 @@ const Home = () => {
         <Navber></Navber>
       </nav>
 
+    <main className='grid grid-cols-12 gap-5 mx-auto w-11/12'>
+      <aside className='col-span-2'>
+      <LeftsideBer></LeftsideBer>
+      </aside>
+      <section className='col-span-7'>
+      <h1>hii</h1>
+      </section>
+      <aside className='col-span-3'>
+      <h1>hii</h1>
+      </aside>
+    </main>
       
      </div>
 

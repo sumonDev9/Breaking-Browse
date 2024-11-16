@@ -1,9 +1,12 @@
 import React from 'react';
+import LoginSocal from './LoginSocal';
+import Findout from './Findout';
 
 const RightNavBar = () => {
     return (
         <div>
-            <h1>Login With</h1>
+            <LoginSocal></LoginSocal>
+            <Findout></Findout>
         </div>
     );
 };

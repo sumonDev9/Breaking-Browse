@@ -10,7 +10,7 @@ const LeftsideBer = () => {
     },[])
     return (
         <div>
-            <h1>All Caterogy{categories.length}</h1>
+            <h1 className='text-[#403F3F] text-xl font-semibold'>All Caterogy({categories.length})</h1>
             <div className='flex flex-col gap-3 w-full mt-6'>
                 {
                     categories.map(category => <button

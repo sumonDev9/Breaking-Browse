@@ -3,6 +3,7 @@ import Header from '../component/Header';
 import Navber from '../component/Navber';
 import LatestNews from '../component/LatestNews';
 import LeftsideBer from '../component/LeftsideBer';
+import RightNavBar from '../component/RightNavBar';
 
 const Home = () => {
     return (
@@ -23,7 +24,7 @@ const Home = () => {
       <h1>hii</h1>
       </section>
       <aside className='col-span-3'>
-      <h1>hii</h1>
+      <RightNavBar></RightNavBar>
       </aside>
     </main>
       

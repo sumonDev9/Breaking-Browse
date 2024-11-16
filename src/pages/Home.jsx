@@ -4,6 +4,7 @@ import Navber from '../component/Navber';
 import LatestNews from '../component/LatestNews';
 import LeftsideBer from '../component/LeftsideBer';
 import RightNavBar from '../component/RightNavBar';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -21,7 +22,7 @@ const Home = () => {
       <LeftsideBer></LeftsideBer>
       </aside>
       <section className='col-span-7'>
-      <h1>hii</h1>
+        <Outlet></Outlet>
       </section>
       <aside className='col-span-3'>
       <RightNavBar></RightNavBar>

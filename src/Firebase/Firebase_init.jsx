@@ -1,17 +1,16 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCJ0gr31FtdsOZD7Zatu8r_rd0N-L4Cv4w",
-  authDomain: "dragon-news-1dd95.firebaseapp.com",
-  projectId: "dragon-news-1dd95",
-  storageBucket: "dragon-news-1dd95.firebasestorage.app",
-  messagingSenderId: "269999622521",
-  appId: "1:269999622521:web:c68237d53fcf0a164e07a8"
+  apiKey: "AIzaSyCXcuddaELDrvu0R9EYKLGJ5CnfwpLccN8",
+  authDomain: "breaking-browse.firebaseapp.com",
+  projectId: "breaking-browse",
+  storageBucket: "breaking-browse.firebasestorage.app",
+  messagingSenderId: "601395551046",
+  appId: "1:601395551046:web:f4b7e138d3bae1a27a2347"
 };
 
 // Initialize Firebase

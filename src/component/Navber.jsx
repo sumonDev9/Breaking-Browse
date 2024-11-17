@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import userIcons from '../../src/assets/user.png'
 import { AuthContext } from '../router/Authcontext';
@@ -37,7 +37,7 @@ const Navber = () => {
             {link}
           </ul>
         </div>
-      <p>{user}</p>
+      <p>{user && user?.email}</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

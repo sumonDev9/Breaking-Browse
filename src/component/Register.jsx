@@ -1,15 +1,32 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPhotos } from "react-icons/io";
+import { AuthContext } from '../router/Authcontext';
 const Register = () => {
 
+  const {createUser, setUser} = useContext(AuthContext);
   const handleRegister = (e) => {
+
+  
+
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, photo, email, password);
+    console.log(name, photo, email, password)
+    // user register 
+    createUser(email, password)
+    .then(result => {
+      console.log(result.user);
+      setUser(user)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage )
+    });
+
   }
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
 import ReactStars from "react-rating-stars-component";
+import { Link } from 'react-router-dom';
 const NewsCard = ({ news }) => {
 
     const ratingChanged = (newRating) => {
@@ -35,7 +36,7 @@ const NewsCard = ({ news }) => {
                 {/* Details */}
                 <p className='text-[#706F6F] font-semibold text-lg'>
                     {news.details.slice(0, 180)}...{" "}
-                    <span className='text-orange-500 cursor-pointer'>Read More</span>
+                    <Link to={`/news/${news._id}`} className='text-orange-500 cursor-pointer'>Read More</Link>
                 </p>
                 {/* bar */}
                 <hr />

@@ -1,15 +1,15 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import userIcons from '../../src/assets/user.png'
 import { AuthContext } from '../router/Authcontext';
 const Navber = () => {
- 
-  const {user} = useContext(AuthContext);
+  console.log(import.meta.env.VITE_a);
+  const {user, logout} = useContext(AuthContext);
 
   const link = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/about'>About</Link></li>
-    <li><Link to='/career'>Career</Link></li>
+    <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/about'>About</NavLink></li>
+    <li><NavLink to='/career'>Career</NavLink></li>
 
   </>
 
@@ -40,15 +40,25 @@ const Navber = () => {
       <p>{user && user?.email}</p>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-4">
           {link}
         </ul>
       </div>
       <div className="navbar-end flex items-center gap-5">
         <div>
-          <img src={userIcons} alt="" />
+          {
+            user && user?.email ? <div> 
+              <img className='w-10 rounded-full' src={user?.photoURL} alt="" />
+              <p>{user.displayName}</p>
+            </div> : <img src={userIcons} alt="" />
+          }
         </div>
-        <Link to='/auth/login' className='px-4 rounded-md py-2 bg-[#403F3F] text-white'>Login</Link>
+        {
+          user && user?.email ? 
+          <button onClick={logout} className='px-4 rounded-md py-2 bg-[#403F3F] text-white'>Logout</button>
+          : <Link to='/auth/login' className='px-4 rounded-md py-2 bg-[#403F3F] text-white'>Login</Link>
+
+        }
       </div>
     </div>
   );

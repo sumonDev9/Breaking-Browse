@@ -2,7 +2,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
 const Header = () => {
-
+  //  console.log(import.meta.env.VITE_a)
     const [time, setTime] = useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
     useEffect(() => {

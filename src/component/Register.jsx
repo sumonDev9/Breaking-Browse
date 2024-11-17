@@ -1,25 +1,39 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdPhotos } from "react-icons/io";
 import { AuthContext } from '../router/Authcontext';
 const Register = () => {
 
-  const {createUser, setUser} = useContext(AuthContext);
+  const {createUser, setUser, updateUserProfile} = useContext(AuthContext);
+  const [error, setError] = useState({});
+  const navigate = useNavigate();
   const handleRegister = (e) => {
-
-  
-
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(name, photo, email, password)
+
+    if(name.length < 5){
+      setError({...error, name: 'must be more than 5 character long'});
+      return;
+    }
+
+
+
+
     // user register 
     createUser(email, password)
     .then(result => {
-      console.log(result.user);
-      setUser(user)
+      setUser(result.user)
+      updateUserProfile({displayName:name, photoURL:photo})
+      .then(() => {
+        navigate("/");
+      })
+      .catch(err => {
+        console.log(err)
+      })
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -56,10 +70,14 @@ const Register = () => {
                 </svg>
                 <input type="text" name='name' className="grow" placeholder="Username" />
               </label>
+              {
+                error.name && <label className="label text-sm text-red-500">{error.name}</label>
+              }
               <label className="input input-bordered flex items-center gap-2">
                 <IoMdPhotos />
                 <input type="text" name='photo' className="grow" placeholder="Photo URL" />
               </label>
+
               <label className="input input-bordered flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +91,7 @@ const Register = () => {
                 </svg>
                 <input type="email" name='email' className="grow" placeholder="Email" />
               </label>
+
               <label className="input input-bordered flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +105,7 @@ const Register = () => {
                 </svg>
                 <input type="password" name='password' placeholder='Passord' />
               </label>
+
               <div className="form-control">
                 <label className="label justify-start gap-3 cursor-pointer">
                   <input type="checkbox" className="checkbox checkbox-primary" />

@@ -1,13 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../router/Authcontext';
 
 const Login = () => {
  
+    const {userLogin, setUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const [error, setError] = useState({})
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password)
+
+        userLogin(email, password)
+        .then(result => {
+            console.log(result.user)
+            setUser(result.user);
+            navigate(location?.state ? location.state : '/');
+        })
+        
+        .catch((err) => {
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            // console.log(errorCode, errorMessage)
+            setError({...error, login: err.code})
+        });
     }
 
     return (
@@ -46,6 +67,11 @@ const Login = () => {
                       </svg>
                       <input type="password" name='password' placeholder='Password' />
                   </label>
+                  {
+                    error.login && (<label className='label text-sm text-red-500'>
+                        {error.login}
+                    </label>)
+                  }
                   <div className='flex justify-between items-center'>
                       <div className="form-control">
                           <label className="cursor-pointer flex items-center gap-2 justify-start">
